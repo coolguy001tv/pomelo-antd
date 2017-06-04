@@ -1,14 +1,15 @@
 /**
  * Created by CoolGuy on 2017/6/3.
+ * 这个文件不要修改位置了，避免出现奇葩的问题
  */
 var fs =require('fs');
-var path = require('path');
 var indexJs = (name)=>{
-    return `var C = require('antd/lib/${name}');\nexports["default"]=C;\nmodule.exports=exports["default"];\n`;
+    //return `var C = require('antd/lib/${name}');\nexports["default"]=C;\nmodule.exports=exports["default"];\n`;
+    return `import C from 'antd/lib/${name}';\nexport default C;`
 };
 var cssJs = (name)=>{
     return `require ('antd/lib/${name}/style/css');\n`;
-}
+};
 var buildDefaultFolders = (parent)=>{
     let antd = "./node_modules/antd/lib";
     fs.mkdirSync(`./${parent}/`);
