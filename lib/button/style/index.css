@@ -1,0 +1,10 @@
+button.ant-btn{
+    border-radius: 0;
+}
+button.ant-btn:hover{
+    opacity: 0.5;
+}
+button.ant-btn-lg{
+    /*保持material-ui的风格高度*/
+    height: 36px;
+}

@@ -1,11 +1,10 @@
 {
   "name": "pomelo-antd",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "这是一个基于antd的修改版本的项目",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack -p"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
