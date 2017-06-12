@@ -16,8 +16,33 @@ pomeloAntdFolders.map((folder)=>{
         realFolder.push(path.resolve(__dirname,"../node_modules",folder));
     }
 });
+//版本只有3位,前大于后返回正数，等于为0，小于为负数
+let compareVersion = (v1,v2)=>{
+    let v1s = v1.split(".");
+    let v2s = v2.split(".");
+    let smallCompare = (c1,c2)=>{
+        return c1-c2;
+    };
+    let result = smallCompare(v1s[0],v2s[0]);
+    if(result !== 0){
+        return result;
+    }
+    result = smallCompare(v1s[1],v2s[1]);
+    if(result !== 0){
+        return result;
+    }
+    result = smallCompare(v1s[2],v2s[2]);
+    return result;
+};
 //console.log(realFolder);
+//cnpm可能会有存在多个版本的情况，此时用最新版本
 if(realFolder.length!=1){
-    console.error(realFolder);
+    let reg = /\d+\.\d+.\d+/;
+    realFolder.sort((a,b)=>{
+        let v1 = a.match(reg)[0];
+        let v2 = b.match(reg)[0];
+        //保留版本号大的
+        return compareVersion(v2,v1);
+    })
 }
 module.exports = realFolder[0];
